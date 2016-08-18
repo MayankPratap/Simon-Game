@@ -4,10 +4,12 @@ body{
 
 }
 
-.wrapper{
 
+
+.wrapper{
+   
    position:relative;
-   width:400px;
+   width:500px;
    left:-10px;
    margin:0 auto;
 
@@ -96,6 +98,7 @@ body{
    top:20px;
    left:200px;
    margin:0 auto;
+   clear:both;
   
 }
 
