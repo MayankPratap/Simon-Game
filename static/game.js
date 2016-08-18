@@ -145,7 +145,10 @@ var game={
      },500);
 
     $('.start').show();
+    $('#updateScore').show();
+    
 
+  
  },
 
  initPadHandler: function(){
@@ -194,7 +197,7 @@ var game={
  },
 
  newLevel: function(){
-
+    
     this.genSequence.length=0;
     this.plaSequence.length=0;
     this.pos=0;
@@ -211,11 +214,42 @@ var game={
  $(document).ready(function(){
 
    $('.start').click(function(){
-      
-      //alert("Sharky is a bitch\n");
+
       $(this).hide();
+      $('#updateScore').hide(); 
       game.init();
 
+
    });
+
+    $('#updateScore').click(function(){
+      
+       $('#updateScore').blur();
+
+       var name=$('#name').val();
+       var email=$('#email').val();
+       console.log(name);
+       console.log(email);
+
+       var temp=$('.score h2').text();
+       var score=temp.substr(7);
+        
+       var payload={"name":name,"email":email,"score":score};
+
+       req=new XMLHttpRequest();
+       req.open("POST","",true);
+       req.setRequestHeader('Content-Type','text/plain');
+       req.onreadystatechange=function(){
+
+           if(req.readyState==4 && req.status==200)
+              console.log(req.responseText);  
+
+       };
+       req.send(JSON.stringify(payload));
+       
+
+   });
+
+
 
  });
